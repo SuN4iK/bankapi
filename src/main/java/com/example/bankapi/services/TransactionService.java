@@ -14,7 +14,7 @@ public class TransactionService {
 
   private Map<UUID, Transaction> transactionRepository = new HashMap<>();
 
-  public void createTransaction(UUID debitAccount, UUID creditAccount, BigDecimal amount, String description) {
+  public Transaction createTransaction(UUID debitAccount, UUID creditAccount, BigDecimal amount, String description) {
     Transaction transaction = new Transaction();
     transaction.setId(UUID.randomUUID());
     transaction.setDebitAccountId(debitAccount);
@@ -23,7 +23,7 @@ public class TransactionService {
     transaction.setDescription(description);
     transaction.setCreatedAt(OffsetDateTime.now());
     transactionRepository.put(transaction.getId(), transaction);
-
+    return transaction;
   }
 
   public List<Transaction> getTransactionsForAccount(UUID accountId) {
