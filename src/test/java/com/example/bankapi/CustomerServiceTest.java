@@ -33,6 +33,6 @@ public class CustomerServiceTest {
     Thread.sleep(2000);
     Customer updatedCustomer = customerService.updateCustomer(customer);
     Assertions.assertEquals("new.doe@example.com", updatedCustomer.getEmail());
-    Assertions.assertTrue(updatedCustomer.getUpdatedAt().isAfter(updatedCustomer.getUpdatedAt())); // Здесь тоже ошибка!
+    Assertions.assertTrue(updatedCustomer.getUpdatedAt().isAfter(updatedCustomer.getCreatedAt())); // Здесь тоже ошибка!
   }
 }

@@ -32,6 +32,6 @@ public class ManagerServiceTest {
     Thread.sleep(2000);
     Manager updatedManager = managerService.updateManager(manager);
     Assertions.assertEquals("new.smith@example.com", updatedManager.getEmail());
-    Assertions.assertTrue(updatedManager.getUpdatedAt().isAfter(updatedManager.getUpdatedAt()));
+    Assertions.assertTrue(updatedManager.getUpdatedAt().isAfter(updatedManager.getCreatedAt()));
   }
 }
