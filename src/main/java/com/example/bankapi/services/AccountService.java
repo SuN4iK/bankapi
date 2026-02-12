@@ -9,7 +9,9 @@ import java.util.UUID;
 import com.example.bankapi.model.entities.Account;
 import com.example.bankapi.model.enums.AccountStatus;
 import com.example.bankapi.model.enums.Currency;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AccountService {
   private Map<UUID, Account> accountRepository = new HashMap<>();
   private TransactionService transactionService;

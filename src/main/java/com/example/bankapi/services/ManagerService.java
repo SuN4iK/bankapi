@@ -7,7 +7,9 @@ import java.util.UUID;
 
 import com.example.bankapi.model.entities.Manager;
 import com.example.bankapi.model.enums.ManagerStatus;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ManagerService {
   private Map<UUID, Manager> managerRepository = new HashMap<>();
 

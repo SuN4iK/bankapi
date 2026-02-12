@@ -7,7 +7,9 @@ import java.util.UUID;
 
 import com.example.bankapi.model.entities.Customer;
 import com.example.bankapi.model.enums.CustomerStatus;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomerService {
   private Map<UUID, Customer> customerRepository = new HashMap<>();
 
