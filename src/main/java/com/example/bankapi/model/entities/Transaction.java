@@ -3,13 +3,20 @@ package com.example.bankapi.model.entities;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
+import org.hibernate.annotations.CreationTimestamp;
 
+@Entity
+@Table(name = "transactions")
 public class Transaction {
+
+  @Id
   private UUID id;
   private UUID debitAccountId;
   private UUID creditAccountId;
   private BigDecimal amount;
   private String description;
+
+  @CreationTimestamp
   private OffsetDateTime createdAt;
 
   public UUID getId() {

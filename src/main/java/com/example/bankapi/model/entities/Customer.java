@@ -3,16 +3,29 @@ package com.example.bankapi.model.entities;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 import com.example.bankapi.model.enums.CustomerStatus;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
+
+  @Id
   private UUID id;
+  
+  @Enumerated(EnumType.STRING)
   private CustomerStatus status;
+
   private String name;
   private String lastname;
   private String email;
   private String address;
   private String phone;
+
+  @CreationTimestamp
   private OffsetDateTime createdAt;
+
+  @UpdateTimestamp
   private OffsetDateTime updatedAt;
 
   public UUID getId() {

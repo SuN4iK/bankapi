@@ -5,16 +5,33 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 import com.example.bankapi.model.enums.Currency;
 import com.example.bankapi.model.enums.AccountStatus;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+@Entity
+@Table(name = "accounts")
 public class Account {
 
+  @Id
   private UUID id;
+
+  @Column(nullable = false)
   private UUID customerId;
+
   private String name;
+
   private BigDecimal balance;
+
+  @Enumerated(EnumType.STRING)
   private Currency currency;
+
+  @CreationTimestamp
   private OffsetDateTime createdAt;
+
+  @UpdateTimestamp
   private OffsetDateTime updatedAt;
+
+  @Enumerated(EnumType.STRING)
   private AccountStatus status;
 
   public void setId(UUID id) {
