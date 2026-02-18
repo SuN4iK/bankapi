@@ -11,8 +11,16 @@ import java.util.UUID;
 import com.example.bankapi.model.entities.Transaction;
 import org.springframework.stereotype.Service;
 
+import com.example.bankapi.repository.TransactionRepository;
+
 @Service
 public class TransactionService {
+
+  private TransactionRepository transactionRepository;
+
+  public TransactionService(TransactionRepository transactionRepository) {
+    this.transactionRepository = transactionRepository;
+  }
 
   private Map<UUID, Transaction> transactionRepository = new HashMap<>();
 

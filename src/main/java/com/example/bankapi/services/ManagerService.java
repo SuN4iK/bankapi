@@ -9,8 +9,17 @@ import com.example.bankapi.model.entities.Manager;
 import com.example.bankapi.model.enums.ManagerStatus;
 import org.springframework.stereotype.Service;
 
+import com.example.bankapi.repository.ManagerRepository;
+
 @Service
 public class ManagerService {
+
+  private ManagerRepository managerRepository;
+
+  public ManagerService(ManagerRepository managerRepository) {
+    this.managerRepository = managerRepository;
+  }
+
   private Map<UUID, Manager> managerRepository = new HashMap<>();
 
   public Manager createManager(String name, String lastName, String email, String password) {

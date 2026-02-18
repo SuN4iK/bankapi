@@ -11,13 +11,17 @@ import com.example.bankapi.model.enums.AccountStatus;
 import com.example.bankapi.model.enums.Currency;
 import org.springframework.stereotype.Service;
 
+import com.example.bankapi.repository.AccountRepository;
+
 @Service
 public class AccountService {
-  private Map<UUID, Account> accountRepository = new HashMap<>();
+  //private Map<UUID, Account> accountRepository = new HashMap<>();
   private TransactionService transactionService;
 
-  public AccountService(TransactionService transactionService) {
+  private AccountRepository accountRepository;
+  public AccountService(TransactionService transactionService, AccountRepository accountRepository) {
     this.transactionService = transactionService;
+    this.accountRepository = accountRepository;
   }
 
   public Account createAccount(UUID customerId, String name, Currency currency, BigDecimal initialBalance) {

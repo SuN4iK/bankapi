@@ -9,8 +9,15 @@ import com.example.bankapi.model.entities.Customer;
 import com.example.bankapi.model.enums.CustomerStatus;
 import org.springframework.stereotype.Service;
 
+import com.example.bankapi.repository.CustomerRepository;
+
 @Service
 public class CustomerService {
+
+  private CustomerRepository customerRepository;
+  private CustomerService(CustomerRepository customerRepository) {
+    this.customerRepository = customerRepository;
+  }
   private Map<UUID, Customer> customerRepository = new HashMap<>();
 
   public Customer createCustomer(String name, String lastname, String email, String address, String phone) { // TODO
