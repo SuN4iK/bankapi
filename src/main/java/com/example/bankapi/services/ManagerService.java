@@ -3,6 +3,7 @@ package com.example.bankapi.services;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 import com.example.bankapi.model.entities.Manager;
@@ -32,22 +33,22 @@ public class ManagerService {
     manager.setCreatedAt(OffsetDateTime.now());
     manager.setUpdatedAt(OffsetDateTime.now());
     manager.setStatus(ManagerStatus.ACTIVE);
-    managerRepository.put(manager.getId(), manager);
+    managerRepository.save(manager);
     return manager;
   }
 
   public Manager updateManager(Manager manager) {
     manager.setUpdatedAt(OffsetDateTime.now());
-    managerRepository.put(manager.getId(), manager);
+    managerRepository.save(manager);
     return manager;
   }
 
   public Manager getManager(UUID managerId) {
-    return managerRepository.get(managerId);
+    return managerRepository.findById(managerId).orElse(null);
   }
 
-  public Map<UUID, Manager> getAll() {
-    return managerRepository;
+  public List<Manager> getAll() {
+    return managerRepository.findAll();
   }
 
 }

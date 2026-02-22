@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.bankapi.model.entities.Customer;
 import com.example.bankapi.services.CustomerService;
@@ -11,11 +12,11 @@ import com.example.bankapi.services.CustomerService;
 @SpringBootTest
 public class CustomerServiceTest {
 
+  @Autowired
   private CustomerService customerService;
 
   @BeforeEach
   void setUp() {
-    customerService = new CustomerService();
   }
 
   @Test

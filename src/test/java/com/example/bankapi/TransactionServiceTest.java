@@ -8,17 +8,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.bankapi.model.entities.Transaction;
 import com.example.bankapi.services.TransactionService;
 
 @SpringBootTest
 public class TransactionServiceTest {
+
+  @Autowired
   private TransactionService transactionService;
 
   @BeforeEach
   void setUp() {
-    transactionService = new TransactionService();
   }
 
   @Test

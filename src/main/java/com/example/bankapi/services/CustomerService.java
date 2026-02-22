@@ -3,6 +3,7 @@ package com.example.bankapi.services;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 import com.example.bankapi.model.entities.Customer;
@@ -34,21 +35,21 @@ public class CustomerService {
     customer.setCreatedAt(OffsetDateTime.now());
     customer.setUpdatedAt(OffsetDateTime.now());
     customer.setStatus(CustomerStatus.ACTIVE);
-    customerRepository.put(customer.getId(), customer);
+    customerRepository.save(customer);
     return customer;
   }
 
   public Customer updateCustomer(Customer customer) {
     customer.setUpdatedAt(OffsetDateTime.now());
-    customerRepository.put(customer.getId(), customer);
+    customerRepository.save(customer);
     return customer;
   }
 
   public Customer getCustomer(UUID customerId) {
-    return customerRepository.get(customerId);
+    return customerRepository.findById(customerId).orElse(null);
   }
 
-  public Map<UUID, Customer> getAll() {
-    return customerRepository;
+  public List<Customer> getAll() {
+    return customerRepository.finAll();
   }
 }

@@ -1,4 +1,4 @@
-package com.example.bankapi.services;
+ackage com.example.bankapi.services;
 
 import java.util.List;
 import java.math.BigDecimal;
@@ -32,13 +32,13 @@ public class TransactionService {
     transaction.setAmount(amount);
     transaction.setDescription(description);
     transaction.setCreatedAt(OffsetDateTime.now());
-    transactionRepository.put(transaction.getId(), transaction);
+    transactionRepository.save(transaction);
     return transaction;
   }
 
   public List<Transaction> getTransactionsForAccount(UUID accountId) {
     List<Transaction> transactions = new ArrayList<>();
-    for (Transaction transaction : transactionRepository.values()) {
+    for (Transaction transaction : transactionRepository.findByDebitOrCreditAccountId(accountId, accountId)) {
       if ((transaction.getDebitAccountId() != null && transaction.getDebitAccountId().equals(accountId))
           || (transaction.getCreditAccountId() != null && transaction.getCreditAccountId().equals(accountId))) {
         transactions.add(transaction);

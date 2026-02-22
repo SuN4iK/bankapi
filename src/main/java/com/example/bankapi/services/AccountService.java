@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 import com.example.bankapi.model.entities.Account;
@@ -34,12 +35,12 @@ public class AccountService {
     account.setCreatedAt(OffsetDateTime.now());
     account.setUpdatedAt(OffsetDateTime.now());
     account.setStatus(AccountStatus.ACTIVE);
-    accountRepository.put(account.getId(), account);
+    accountRepository.save(account);
     return account;
   }
 
   public void deposit(UUID accountId, BigDecimal amount) {
-    Account account = accountRepository.get(accountId);
+    Account account = accountRepository.findById(accountId);
     if (account == null) {
       throw new RuntimeException("Счет не найден"); // TODO сделать свое исключение
     }
@@ -52,7 +53,7 @@ public class AccountService {
   }
 
   public void withdraw(UUID accountId, BigDecimal amount) {
-    Account account = accountRepository.get(accountId);
+    Account account = accountRepository.findById(accountId).orElse(null);
     if (account == null) {
       throw new RuntimeException("Счет не найден"); // TODO сделать свое исключение
     }
@@ -70,8 +71,8 @@ public class AccountService {
   }
 
   public void transfer(UUID fromAccountId, UUID toAccountId, BigDecimal amount) {
-    Account fromAccount = accountRepository.get(fromAccountId);
-    Account toAccount = accountRepository.get(toAccountId);
+    Account fromAccount = accountRepository.findById(fromAccountId).orElse(null);
+    Account toAccount = accountRepository.findById(toAccountId).orElse(null);
 
     if (fromAccount == null) {
       throw new RuntimeException("Счет вывода не найден"); // TODO сделать свое исключение
@@ -99,11 +100,11 @@ public class AccountService {
   }
 
   public Account getAccount(UUID accountId) {
-    return accountRepository.get(accountId);
+    return accountRepository.findById(accountId).orElse(null);
   }
 
-  public Map<UUID, Account> getAll() {
-    return accountRepository;
+  public List<Account> getAll() {
+    return accountRepository.findAll();
   }
 
 }
