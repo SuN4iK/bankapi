@@ -1,4 +1,4 @@
-ackage com.example.bankapi.services;
+package com.example.bankapi.services;
 
 import java.util.List;
 import java.math.BigDecimal;
