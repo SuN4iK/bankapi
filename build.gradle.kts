@@ -24,6 +24,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     runtimeOnly("org.postgresql:postgresql")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.sringdoc:springdoc-openapi-starter-webmvc-ui")
 
 }
 

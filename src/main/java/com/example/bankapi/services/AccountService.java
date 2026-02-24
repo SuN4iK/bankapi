@@ -40,7 +40,7 @@ public class AccountService {
   }
 
   public void deposit(UUID accountId, BigDecimal amount) {
-    Account account = accountRepository.findById(accountId);
+    Account account = accountRepository.findById(accountId).orElse(null);
     if (account == null) {
       throw new RuntimeException("Счет не найден"); // TODO сделать свое исключение
     }
