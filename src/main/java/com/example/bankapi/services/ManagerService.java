@@ -21,7 +21,6 @@ public class ManagerService {
     this.managerRepository = managerRepository;
   }
 
-  private Map<UUID, Manager> managerRepository = new HashMap<>();
 
   public Manager createManager(String name, String lastName, String email, String password) {
     Manager manager = new Manager();

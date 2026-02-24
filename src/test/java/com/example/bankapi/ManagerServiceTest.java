@@ -4,17 +4,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.bankapi.model.entities.Manager;
 import com.example.bankapi.services.ManagerService;
 
 @SpringBootTest
 public class ManagerServiceTest {
+
+  @Autowired
   protected ManagerService managerService;
 
   @BeforeEach
   void setUp() {
-    managerService = new ManagerService();
   }
 
   @Test

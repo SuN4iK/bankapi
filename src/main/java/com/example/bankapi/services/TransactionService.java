@@ -22,7 +22,6 @@ public class TransactionService {
     this.transactionRepository = transactionRepository;
   }
 
-  private Map<UUID, Transaction> transactionRepository = new HashMap<>();
 
   public Transaction createTransaction(UUID debitAccount, UUID creditAccount, BigDecimal amount, String description) {
     Transaction transaction = new Transaction();

@@ -5,6 +5,7 @@ import java.util.UUID;
 import com.example.bankapi.model.enums.CustomerStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "customers")

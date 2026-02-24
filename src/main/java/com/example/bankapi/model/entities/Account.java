@@ -7,6 +7,7 @@ import com.example.bankapi.model.enums.Currency;
 import com.example.bankapi.model.enums.AccountStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "accounts")

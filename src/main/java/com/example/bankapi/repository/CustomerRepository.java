@@ -1,5 +1,5 @@
 package com.example.bankapi.repository;
-
+import com.example.bankapi.model.entities.Customer;
 import com.example.bankapi.model.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 

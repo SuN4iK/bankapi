@@ -16,10 +16,9 @@ import com.example.bankapi.repository.CustomerRepository;
 public class CustomerService {
 
   private CustomerRepository customerRepository;
-  private CustomerService(CustomerRepository customerRepository) {
+  public CustomerService(CustomerRepository customerRepository) {
     this.customerRepository = customerRepository;
   }
-  private Map<UUID, Customer> customerRepository = new HashMap<>();
 
   public Customer createCustomer(String name, String lastname, String email, String address, String phone) { // TODO
                                                                                                              // сделать
@@ -50,6 +49,6 @@ public class CustomerService {
   }
 
   public List<Customer> getAll() {
-    return customerRepository.finAll();
+    return customerRepository.findAll();
   }
 }

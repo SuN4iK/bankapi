@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "transactions")
