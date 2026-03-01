@@ -37,7 +37,7 @@ public class TransactionService {
 
   public List<Transaction> getTransactionsForAccount(UUID accountId) {
     List<Transaction> transactions = new ArrayList<>();
-    for (Transaction transaction : transactionRepository.findByDebitOrCreditAccountId(accountId, accountId)) {
+    for (Transaction transaction : transactionRepository.findByDebitAccountIdOrCreditAccountId(accountId, accountId)) {
       if ((transaction.getDebitAccountId() != null && transaction.getDebitAccountId().equals(accountId))
           || (transaction.getCreditAccountId() != null && transaction.getCreditAccountId().equals(accountId))) {
         transactions.add(transaction);

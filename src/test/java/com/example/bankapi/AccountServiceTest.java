@@ -43,14 +43,14 @@ public class AccountServiceTest {
   void testDeposit() {
     Account account = accountService.createAccount(customerId, "DepositAccount", Currency.USD, BigDecimal.valueOf(100));
     accountService.deposit(account.getId(), BigDecimal.valueOf(50));
-    Assertions.assertEquals(BigDecimal.valueOf(150), accountService.getAccount(account.getId()).getBalance());
+    Assertions.assertEquals(0, BigDecimal.valueOf(150).compareTo(accountService.getAccount(account.getId()).getBalance()));
   }
 
   @Test
   void testWithdraw() {
     Account account = accountService.createAccount(customerId, "Withdraw test", Currency.USD, BigDecimal.valueOf(100));
     accountService.withdraw(account.getId(), BigDecimal.valueOf(40));
-    Assertions.assertEquals(BigDecimal.valueOf(60), accountService.getAccount(account.getId()).getBalance());
+    Assertions.assertEquals(0, BigDecimal.valueOf(60).compareTo(accountService.getAccount(account.getId()).getBalance()));
   }
 
   @Test
@@ -68,8 +68,8 @@ public class AccountServiceTest {
     Account accountTo = accountService.createAccount(UUID.randomUUID(), "Transfer to", Currency.USD,
         BigDecimal.valueOf(100));
     accountService.transfer(accountFrom.getId(), accountTo.getId(), BigDecimal.valueOf(50));
-    Assertions.assertEquals(BigDecimal.valueOf(150), accountService.getAccount(accountFrom.getId()).getBalance());
-    Assertions.assertEquals(BigDecimal.valueOf(150), accountService.getAccount(accountTo.getId()).getBalance());
+    Assertions.assertEquals(0, BigDecimal.valueOf(150).compareTo(accountService.getAccount(accountFrom.getId()).getBalance()));
+    Assertions.assertEquals(0, BigDecimal.valueOf(150).compareTo(accountService.getAccount(accountTo.getId()).getBalance()));
 
   }
 }

@@ -8,5 +8,5 @@ import java.util.UUID;
 import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
-	List<Transaction> findByDebitOrCreditAccountId(UUID debitID, UUID creditId);
+	List<Transaction> findByDebitAccountIdOrCreditAccountId(UUID debitId, UUID creditId);
 }

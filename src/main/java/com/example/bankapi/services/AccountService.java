@@ -13,7 +13,9 @@ import com.example.bankapi.model.enums.Currency;
 import org.springframework.stereotype.Service;
 
 import com.example.bankapi.repository.AccountRepository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Service
 public class AccountService {
   //private Map<UUID, Account> accountRepository = new HashMap<>();
